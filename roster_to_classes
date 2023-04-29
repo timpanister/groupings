@@ -9,7 +9,7 @@ input_file = "../01_raw_data/roster_gpa.csv"
 classes_folder = "../01_raw_data/classes"
 
 # Function to split a roster to student lists by class section
-def roster_to_classes():
+def split_roster_to_classes():
   
   # Read in roster
   roster = pd.read_csv(input_file)
@@ -25,4 +25,4 @@ def roster_to_classes():
     student_list.to_csv(output_file, index=False)
 
 # Run function
-roster_to_classes()
+split_roster_to_classes()
