@@ -1,0 +1,28 @@
+# Function to split a class roster to individual classes
+import os
+import pandas
+
+# path of roster
+input_file = "../01_raw_data/roster_gpa.csv"
+
+# Destination folder for .csv output
+classes_folder = "../01_raw_data/classes"
+
+# Function to split a roster to student lists by class section
+def roster_to_classes():
+  
+  # Read in roster
+  roster = pd.read_csv(input_file)
+
+  # Get list of class sections
+  class_sections = list(roster["Class Section"].unique())
+
+  for i in class_sections:
+    student_list = roster[roster["Class Section"]== i]
+    # print(classlist.head())
+      # Save the group assignments to a CSV file
+    output_file = os.path.join(classes_folder, f"student_list_{i}.csv")
+    student_list.to_csv(output_file, index=False)
+
+# Run function
+roster_to_classes()
